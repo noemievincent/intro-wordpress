@@ -1,6 +1,6 @@
-# Portfolio
+# Projet de découverte de Wordpress
 
-Ce repository représente mon projet Portfolio pour le cours de Design Web à la HEPL.
+Ce repository représente le projet de test du Groupe 2285 A à la HEPL.
 
 ## Getting started
 
