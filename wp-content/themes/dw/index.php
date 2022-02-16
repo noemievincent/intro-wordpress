@@ -13,7 +13,7 @@
                             <p class="post_meta">Publier par <?= get_the_author(); ?> le <time class="post__date" datetime="<?= get_the_date('c'); ?>"><?= get_the_date(); ?></time></p>
                         </header>
                         <figure class="post__fig">
-                            <?= get_the_post_thumbnail(null, 'thumbnail', ['class' => 'post__thumb']); ?>
+                            <?= get_the_post_thumbnail(null, 'medium_large', ['class' => 'post__thumb']); ?>
                         </figure>
                         <div class="post__excerpt">
                             <p><?= get_the_excerpt(); ?></p>
