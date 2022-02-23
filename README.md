@@ -10,3 +10,7 @@ Ce repository représente le projet de test du Groupe 2285 A à la HEPL.
 4. Configurer le fichier `wp-config.php` (et s'il n'existe pas, le créer à partir de `wp-config-sample.php`). 
 5. Créer une base de données.
 6. Importer le fichier `database.sql` (mis à jour régulièrement pendant la phase de développement uniquement).
+
+### Plugins à installer
+
+- ACF
