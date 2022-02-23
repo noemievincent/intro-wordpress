@@ -13,8 +13,9 @@ register_post_type('trip', [
         'name' => 'Voyages',
         'singular_name' => 'Voyage',
     ],
+    'description' => 'Tous les articles qui décrivent un voyage',
     'public' => true,
-    'description' => 'Tous les articles qui décrivent les voyages',
     'menu_position' => 5,
     'menu_icon' => 'dashicons-airplane',
+    'supports' => ['title', 'editor', 'thumbnail'],
 ]);
