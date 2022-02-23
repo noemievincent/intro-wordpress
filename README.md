@@ -14,3 +14,4 @@ Ce repository représente le projet de test du Groupe 2285 A à la HEPL.
 ### Plugins à installer
 
 - ACF
+- Contact Form 7
