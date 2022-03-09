@@ -59,8 +59,6 @@ class PrimaryMenuItem
             $modifiers[] = $icon;
         }
 
-
-
         if ($this->post->object_id == get_queried_object_id()) {
             $modifiers[] = 'current';
         }
