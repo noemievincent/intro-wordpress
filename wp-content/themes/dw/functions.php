@@ -10,7 +10,7 @@ add_filter('use_block_editor_for_post', '__return_false');
 // Activer les images sur les articles
 add_theme_support('post-thumbnails');
 
-// Enregistrer un seul custom post-type pour "nos voyages"
+// Enregistrer un custom post-type pour "nos voyages"
 register_post_type('trip', [
     'label' => 'Voyages',
     'labels' => [
@@ -23,6 +23,27 @@ register_post_type('trip', [
     'menu_icon' => 'dashicons-airplane',
     'supports' => ['title', 'editor', 'thumbnail'],
     'rewrite' => ['slug' => 'voyages'],
+]);
+
+// Enregistrer un custom post-type pour les messages de contact
+register_post_type('message', [
+    'label' => 'Messages de contact',
+    'labels' => [
+        'name' => 'Messages de contact',
+        'singular_name' => 'Message de contact',
+    ],
+    'description' => 'Les messages envoyés par le formulaire de contact',
+    'public' => false,
+    'show_ui' => true,
+    'menu_position' => 15,
+    'menu_icon' => 'dashicons-buddicons-pm',
+    'capabilities' => [
+        'create_posts' => false,
+        'read_posts' => true,
+        'read_private_posts' => true,
+        'edit_posts' => true,
+    ],
+    'map_meta_cap' => true,
 ]);
 
 // Récupérer les trips via une requête Wordpress
@@ -79,4 +100,50 @@ function dw_get_menu_items($location)
 
     // Retourner un tableau d'éléments du menu formatés
     return $items;
+}
+
+// Gérer l'envoi de formulaire personnalisé
+
+add_action('admin_post_submit_contact_form', 'dw_handle_submit_contact_form');
+
+function dw_handle_submit_contact_form()
+{
+    $nonce = $_POST['_wpnonce'];
+
+    if (wp_verify_nonce($nonce, 'nonce_submit_contact')) {
+        $firstname = sanitize_text_field($_POST['firstname']);
+        $lastname = sanitize_text_field($_POST['lastname']);
+        $email = sanitize_email($_POST['email']);
+        $phone = sanitize_text_field($_POST['phone']);
+        $message = sanitize_text_field($_POST['message']);
+        $rules = sanitize_text_field($_POST['rules'] ?? '');
+
+        if ($firstname && $lastname && $email && $message) {
+            if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                if ($rules === '1') {
+                    $id = wp_insert_post([
+                        'post_title' => 'Message de ' . $firstname . ' ' . $lastname,
+                        'post_type' => 'message',
+                        'post_content' => $message,
+                        'post_status' => 'publish',
+                    ]);
+
+                    // Générer un email contenant l'url vers le post en question
+                    $feedback = 'Bonjour, vous avez un nouveau message.';
+                    $feedback .= ' Y accéder : ' . get_edit_post_link($id);
+
+                    // Envoyer l'email à l'admin
+                    wp_mail(get_bloginfo('admin_email'), 'Nouveau message !', $feedback);
+                } else {
+                    // TODO : retourner une erreur de validation "règles pas acceptées"
+                }
+            } else {
+                // TODO : retourner une erreur de validation "email non-valide"
+            }
+        } else {
+            // TODO : retourner une erreur de validation "champs requis"
+        }
+    }
+
+    // TODO : retourner un message d'erreur "not authorized"
 }
