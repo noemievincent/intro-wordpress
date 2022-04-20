@@ -13,12 +13,12 @@ require_once(__DIR__ . '/Forms/Validators/RequiredValidator.php');
 require_once(__DIR__ . '/Forms/Validators/EmailValidator.php');
 require_once(__DIR__ . '/Forms/Validators/AcceptedValidator.php');
 
-// Lancer la sessions PHP pour pouvoir passer des variables de page en page
+// Lancer la session PHP pour pouvoir passer des variables de page en page
 add_action('init', 'dw_start_session', 1);
 
 function dw_start_session()
 {
-    if (! session_id()) {
+    if (!session_id()) {
         session_start();
     }
 }
@@ -40,7 +40,7 @@ register_post_type('trip', [
     'public' => true,
     'menu_position' => 5,
     'menu_icon' => 'dashicons-airplane',
-    'supports' => ['title','editor','thumbnail'],
+    'supports' => ['title', 'editor', 'thumbnail'],
     'rewrite' => ['slug' => 'voyages'],
 ]);
 
@@ -94,7 +94,7 @@ function dw_get_menu_items($location)
     // Récupérer le menu Wordpress pour $location
     $locations = get_nav_menu_locations();
 
-    if(! ($locations[$location] ?? false)) {
+    if (!($locations[$location] ?? false)) {
         return $items;
     }
 
@@ -105,19 +105,19 @@ function dw_get_menu_items($location)
 
     // Formater chaque élément dans une instance de classe personnalisée
     // Boucler sur chaque $post
-    foreach($posts as $post) {
+    foreach ($posts as $post) {
         // Transformer le WP_Post en une instance de notre classe personnalisée
         $item = new PrimaryMenuItem($post);
 
         // Ajouter au tableau d'éléments de niveau 0.
-        if(! $item->isSubItem()) {
+        if (!$item->isSubItem()) {
             $items[] = $item;
             continue;
         }
 
         // Ajouter $item comme "enfant" de l'item parent.
-        foreach($items as $parent) {
-            if(! $parent->isParentFor($item)) continue;
+        foreach ($items as $parent) {
+            if (!$parent->isParentFor($item)) continue;
 
             $parent->addSubItem($item);
         }
@@ -139,7 +139,7 @@ function dw_handle_submit_contact_form()
 
 function dw_get_contact_field_value($field)
 {
-    if(! isset($_SESSION['contact_form_feedback'])) {
+    if (!isset($_SESSION['contact_form_feedback'])) {
         return '';
     }
 
@@ -148,13 +148,39 @@ function dw_get_contact_field_value($field)
 
 function dw_get_contact_field_error($field)
 {
-    if(! isset($_SESSION['contact_form_feedback'])) {
+    if (!isset($_SESSION['contact_form_feedback'])) {
         return '';
     }
 
-    if(! ($_SESSION['contact_form_feedback']['errors'][$field] ?? null)) {
+    if (!($_SESSION['contact_form_feedback']['errors'][$field] ?? null)) {
         return '';
     }
 
     return '<p>' . $_SESSION['contact_form_feedback']['errors'][$field] . '</p>';
+}
+
+// fonction qui charge les assets compilés et retourne leur chemin absolu
+
+function dw_mix($path)
+{
+    $path = '/' . ltrim($path, '/');
+
+    if (!realpath(__DIR__ . '/public' . $path)) {
+        return;
+    }
+
+    if (!($manifest = realpath(__DIR__ . '/public/mix-manifest.json'))) {
+        return get_stylesheet_directory_uri() . '/public' . $path;
+    }
+
+    // Ouvrir le fichier mix-manifest.json
+    $manifest = json_decode(file_get_contents($manifest), true);
+
+    // Regarder si on a une clé qui correspond au fichier chargé dans $path
+    if (!array_key_exists($path, $manifest)) {
+        return get_stylesheet_directory_uri() . '/public' . $path;
+    }
+
+    // Récupérer & retourner le chemin versionné
+    return get_stylesheet_directory_uri() . '/public' . $manifest[$path];
 }
