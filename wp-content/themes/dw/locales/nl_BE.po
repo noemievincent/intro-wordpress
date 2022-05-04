@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Thème de test cours Wordpress\n"
 "POT-Creation-Date: 2022-05-04 09:41+0200\n"
-"PO-Revision-Date: 2022-05-04 09:48+0200\n"
+"PO-Revision-Date: 2022-05-04 10:01+0200\n"
 "Last-Translator: \n"
 "Language-Team: Noémie\n"
 "Language: nl_BE\n"
@@ -17,88 +17,88 @@ msgstr ""
 
 #: Forms/Validators/AcceptedValidator.php:8
 msgid "Veuillez cocher la case ci-dessus pour continuer."
-msgstr "Veuillez cocher la case ci-dessus pour continuer."
+msgstr "Gelieve het bovenstaande vakje aan te vinken om verder te gaan."
 
 #: Forms/Validators/EmailValidator.php:8
 msgid "Merci de fournir une adresse mail valide."
-msgstr "Merci de fournir une adresse mail valide."
+msgstr "Geef een geldig e-mailadres op."
 
 #: Forms/Validators/RequiredValidator.php:7
 msgid "Ce champ ne peut pas être vide."
-msgstr "Ce champ ne peut pas être vide."
+msgstr "Dit veld kan niet leeg zijn."
 
 #: footer.php:3
 msgid "Pied de page"
-msgstr "Pied de page"
+msgstr "Voettekst"
 
 #: header.php:18
 msgid "Navigation principale"
-msgstr "Navigation principale"
+msgstr "Hoofdnavigatie"
 
 #: index.php:5
 msgid "Mes derniers articles"
-msgstr "Mes derniers articles"
+msgstr "Mijn laatste artikelen"
 
 #: index.php:29
 msgid "Mes derniers voyages"
-msgstr "Mes derniers voyages"
+msgstr "Mijn laatste reizen"
 
 #: index.php:46
 msgid "Il n’y a pas de voyages à vous raconter..."
-msgstr "Il n’y a pas de voyages à vous raconter..."
+msgstr "Er zijn geen reizen om je over te vertellen…"
 
 #: single-trip.php:12
 msgid "Détails du voyage"
-msgstr "Détails du voyage"
+msgstr "Reisgegevens"
 
 #: single-trip.php:14
 msgid "Date de départ"
-msgstr "Date de départ"
+msgstr "Datum van vertrek"
 
 #: single-trip.php:18
 msgid "Date de retour"
-msgstr "Date de retour"
+msgstr "Datum terugkeer"
 
 #: single-trip.php:23
 msgid "Aucune date de retour prévue pour le moment."
-msgstr "Aucune date de retour prévue pour le moment."
+msgstr "Er is op dit moment geen datum van terugkeer gepland."
 
 #: template-contact.php:12
 msgid "Oups ! Il y a des erreurs dans le formulaire"
-msgstr "Oups ! Il y a des erreurs dans le formulaire"
+msgstr "Oeps! Er zijn fouten in de vorm"
 
 #: template-contact.php:15
 msgid "Votre prénom"
-msgstr "Votre prénom"
+msgstr "Uw voornaam"
 
 #: template-contact.php:20
 msgid "Votre nom"
-msgstr "Votre nom"
+msgstr "Uw naam"
 
 #: template-contact.php:25
 msgid "Votre adresse e-mail"
-msgstr "Votre adresse e-mail"
+msgstr "Uw e-mail adres"
 
 #: template-contact.php:30
 msgid "Votre numéro de téléphone"
-msgstr "Votre numéro de téléphone"
+msgstr "Uw telefoonnummer"
 
 #: template-contact.php:35
 msgid "Votre message"
-msgstr "Votre message"
+msgstr "Uw bericht"
 
 #: template-contact.php:42
 msgid "conditions générals d’utilisations"
-msgstr "conditions générals d’utilisations"
+msgstr "algemene gebruiksvoorwaarden"
 
 #: template-contact.php:42
 msgid "J’accepte les :conditions"
-msgstr "J’accepte les :conditions"
+msgstr "Ik accepteer de :conditions"
 
 #: template-contact.php:49
 msgid "Envoyer"
-msgstr "Envoyer"
+msgstr "Stuur"
 
 #: template-contact.php:53
 msgid "Merci ! Votre message a bien été envoyé."
-msgstr "Merci ! Votre message a bien été envoyé."
+msgstr "Dank je. Uw bericht is verzonden."
