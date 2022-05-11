@@ -2,6 +2,12 @@
 <?php if(have_posts()): while (have_posts()): the_post(); ?>
     <main class="layout singleTrip">
         <h2 class="singleTrip__title"><?= get_the_title(); ?></h2>
+        <dl class="singleTrip__taxonomies">
+            <dt class="singleTrip__taxonomy">Pays&nbsp;:</dt>
+            <dd class="singleTrip__terms">
+                <?= implode(', ', array_map(fn($term) => $term->name, get_the_terms(get_the_ID(),'country'))) ?>
+            </dd>
+        </dl>
         <figure class="singleTrip__fig">
             <?= get_the_post_thumbnail(null, 'medium_large', ['class' => 'singleTrip__thumb']); ?>
         </figure>

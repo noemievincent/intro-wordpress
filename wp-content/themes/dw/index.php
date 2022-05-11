@@ -6,7 +6,7 @@
         <div class="latest__container">
             <?php if (have_posts()): while(have_posts()): the_post(); ?>
                 <article class="post">
-                    <a href="<?= get_the_permalink(); ?>" class="post__link">Lire l'article "<?= get_the_title(); ?>"</a>
+                    <a href="<?= get_the_permalink(); ?>" class="post__link"><?= __('Lire l‘article', 'dw') ?>"<?= get_the_title(); ?>"</a>
                     <div class="post__card">
                         <header class="post__head">
                             <h3 class="post__title"><?= get_the_title(); ?></h3>
@@ -31,14 +31,14 @@
             <?php //$trips = dw_get_trips(3); ?>
             <?php if (($trips = dw_get_trips(3))->have_posts()): while ($trips->have_posts()): $trips->the_post(); ?>
             <article class="trip">
-                <a href="<?= get_the_permalink(); ?>" class="trip__link">Lire le récit de voyage "<?= get_the_title(); ?>"</a>
+                <a href="<?= get_the_permalink(); ?>" class="trip__link"><?= __('Lire le récit de voyage ', 'dw') ?>"<?= get_the_title(); ?>"</a>
                 <div class="trip__card">
                     <header class="trip__head">
                         <h3 class="trip__title"><?= get_the_title(); ?></h3>
                         <p class="trip__meta"><time class="trip__time" datetime="<?= date('c', strtotime(get_field('departure_date', false, false))); ?>"><?= ucwords(date_i18n('F, Y', strtotime(get_field('departure_date', false, false)))); ?></time></p>
                     </header>
                     <figure class="trip__fig">
-                        <?= get_the_post_thumbnail(null, 'medium_large', ['class' => 'trips__thumb']); ?>
+                        <?= get_the_post_thumbnail(null, 'thumbnail', ['class' => 'trips__thumb']); ?>
                     </figure>
                 </div>
             </article>
