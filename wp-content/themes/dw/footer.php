@@ -1,7 +1,7 @@
     <footer class="footer">
-        <section class="footer_body">
-           <h2 class="footer_title"><?= __('Pied de page', 'dw') ?></h2>
-            <p class="footer_placeholder">TODO...</p>
+        <section class="footer__body">
+            <h2 class="footer__title"><?= __('Pied de page', 'dw'); ?></h2>
+            <p class="footer__placeholder">TODO...</p>
         </section>
     </footer>
     <?php wp_footer(); ?>

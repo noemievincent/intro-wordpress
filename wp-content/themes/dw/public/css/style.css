@@ -73,14 +73,32 @@ table {
 .nav__container {
   display: flex;
   justify-content: space-between;
-  min-width: 600px;
+  min-width: 400px;
 }
 
 .nav a {
   text-decoration: none;
-  color: rebeccapurple;
+  color: #614E42;
+}
+
+.nav__item {
+  position: relative;
 }
 
 .nav__subcontainer {
+  background-color: lightgray;
+  position: absolute;
+  left: -10px;
+  font-size: 0.8em;
+  padding: 10px;
+  min-width: 130px;
   display: none;
+}
+
+.nav__subitem + .nav__subitem {
+  margin-top: 8px;
+}
+
+.nav__item:hover .nav__subcontainer {
+  display: block;
 }
